@@ -20,36 +20,6 @@
             landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "5E9BF374-5359-4234-874D-0FE07077CD0B - 3ef95d2b61d2fbe6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.hAlign(SwiftUI.Alignment) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.hAlign(SwiftUI.Alignment) -&gt; some&gt;&gt;.0, SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.border(CoreGraphics.CGFloat, SwiftUI.Color) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.hAlign(SwiftUI.Alignment) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0)&gt;&gt;, &lt;&lt;opaque return type of SwiftUI.View.vAlign(SwiftUI.Alignment) -&gt; some&gt;&gt;.0)&gt; in SocialMediaApp.LoginView.body.getter : some"
-                  moduleName = "SocialMediaApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/abhinavnagar2696/SocialMediaApp/SocialMediaApp/%20View/LoginView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "1948">
-               </Location>
-               <Location
-                  uuid = "5E9BF374-5359-4234-874D-0FE07077CD0B - 2e8b19b08c91e484"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.border(CoreGraphics.CGFloat, SwiftUI.Color) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.hAlign(SwiftUI.Alignment) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.hAlign(SwiftUI.Alignment) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.hAlign(SwiftUI.Alignment) -&gt; some&gt;&gt;.0, SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.border(CoreGraphics.CGFloat, SwiftUI.Color) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.hAlign(SwiftUI.Alignment) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0)&gt;&gt;, &lt;&lt;opaque return type of SwiftUI.View.vAlign(SwiftUI.Alignment) -&gt; some&gt;&gt;.0)&gt; in SocialMediaApp.LoginView.body.getter : some"
-                  moduleName = "SocialMediaApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/abhinavnagar2696/SocialMediaApp/SocialMediaApp/%20View/LoginView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "1080">
-               </Location>
-               <Location
                   uuid = "5E9BF374-5359-4234-874D-0FE07077CD0B - 3ef95d2b61d2fa20"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"

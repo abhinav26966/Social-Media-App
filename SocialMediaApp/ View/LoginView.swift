@@ -19,7 +19,7 @@ struct LoginView: View {
     @State var createAccount: Bool = false
     @State var showError: Bool = false
     @State var errorMessage: String = ""
-    
+    @State var isLoading: Bool = false
     
     var body: some View {
         VStack(spacing: 10){
@@ -63,6 +63,7 @@ struct LoginView: View {
                 
                 Button("Register Now") {
                         createAccount.toggle()
+                        print("User Saved successfully")
                     }
                     .fontWeight(.bold)
                     .foregroundColor(.black)
@@ -72,6 +73,9 @@ struct LoginView: View {
         }
         .vAlign(.top)
         .padding(15)
+        .overlay(content: {
+            LoadingView(show: $isLoading)
+        })
         .fullScreenCover(isPresented: $createAccount){
             RegisterView()
         }
@@ -80,6 +84,7 @@ struct LoginView: View {
     }
     
     func loginUser(){
+        isLoading = true
         Task{
             do{
                 // With the help of Swift Concurrency Auth can be done with a single line
@@ -90,6 +95,8 @@ struct LoginView: View {
             }
         }
     }
+    
+    
     
     func resetPassword(){
         Task{
@@ -109,6 +116,7 @@ struct LoginView: View {
         await MainActor.run(body: {
             errorMessage = error.localizedDescription
             showError.toggle()
+            isLoading = false
         })
     }
 }
@@ -131,6 +139,15 @@ struct RegisterView: View {
     
     @State var errorMessage: String = ""
     @State var showError: Bool = false
+    
+    @State var isLoading: Bool = false
+    
+    
+    //User Defaults
+    @AppStorage("log_status") var logStatus: Bool = false
+    @AppStorage("user_profile_url") var profileURL: URL?
+    @AppStorage("user_name") var userNameStored: String = ""
+    @AppStorage("user_UID") var userUID: String = ""
     
     var body: some View {
         VStack(spacing: 10){
@@ -164,6 +181,9 @@ struct RegisterView: View {
         }
         .vAlign(.top)
         .padding(15)
+        .overlay(content: {
+            LoadingView(show: $isLoading)
+        })
         .photosPicker(isPresented: $showImagePicker, selection: $photoItem)
         .onChange(of: photoItem) { oldvalue, newValue in
             if let newValue{
@@ -236,6 +256,8 @@ struct RegisterView: View {
     }
     
     func registerUser(){
+        isLoading = true
+        
         Task{
             do{
                 // Step 1 : Creating Firebase account
@@ -254,7 +276,11 @@ struct RegisterView: View {
                     error in
                     if error == nil{
                         // Print Saved Successfully
-                        print("Saved Successfully")
+                        print("Saved Successfully" )
+                        userNameStored = username
+                        self.userUID = userUID
+                        profileURL = downloadURL
+                        logStatus = true
                     }
                 })
             }catch{
@@ -269,6 +295,7 @@ struct RegisterView: View {
         await MainActor.run(body: {
             errorMessage = error.localizedDescription
             showError.toggle()
+            isLoading = false
         })
     }
 }
