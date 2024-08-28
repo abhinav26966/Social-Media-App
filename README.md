@@ -17,6 +17,13 @@ This is a SwiftUI-based iOS application for a social media platform. The app pro
   - Firebase Storage
 - PhotosUI
 
+
+## Demo of the Project: 
+
+https://github.com/user-attachments/assets/0a8ea606-ab17-4b4e-b9a9-c23a01001574
+
+In the near future, I'll be implementing additional features and refining the user interface to enhance the overall user experience.
+
 ## Project Structure
 The project consists of the following main components:
 
