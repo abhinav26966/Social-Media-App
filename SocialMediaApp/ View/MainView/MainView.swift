@@ -11,7 +11,7 @@ struct MainView: View {
     var body: some View {
         // TabView with recent post's and profile tabs
         TabView{
-            Text("Recent Post's")
+            PostsView()
                 .tabItem {
                     Image(systemName: "rectangle.portrait.on.rectangle.portrait.angled")
                     Text("Post's")

@@ -7,6 +7,8 @@
 
 import SwiftUI
 import PhotosUI
+import Firebase
+import FirebaseStorage
 
 struct CreateNewPost: View {
     
@@ -44,10 +46,7 @@ struct CreateNewPost: View {
                 }
                 .hAlign(.leading)
                 
-                Button(action: {
-                        // Post action
-                        showKeyboard = false // Hide keyboard on post
-                    }){
+                Button(action: createPost){
                     Text("Post")
                         .font(.callout)
                         .foregroundColor(.white)
@@ -77,6 +76,20 @@ struct CreateNewPost: View {
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: size.width, height: size.height)
                                 .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                                // Delete Button
+                                .overlay(alignment: .topTrailing){
+                                    Button{
+                                        withAnimation(.easeInOut(duration: 0.25)){
+                                            self.postImageData = nil
+                                            
+                                        }
+                                    } label: {
+                                        Image(systemName: "trash")
+                                            .fontWeight(.bold)
+                                            .tint(.red)
+                                    }
+                                    .padding(10)
+                                }
                         }
                         .clipped()
                         .frame(height: 220)
@@ -105,22 +118,84 @@ struct CreateNewPost: View {
             .padding(.vertical, 10)
         }
         .vAlign(.top)
-        .onAppear{
-            showKeyboard = true
-        }
         .photosPicker(isPresented: $showImagePicker, selection: $photoItem)
-        .onChange(of: photoItem) { newValue in
+        .onChange(of: photoItem){ newValue in
             if let newValue{
-                Task {
-                    if let rawImageData = try? await newValue.loadTransferable(type: Data.self),
-                       let image = UIImage(data: rawImageData),
-                       let compressedImageData = image.jpegData(compressionQuality: 0.5) {
-                        // Handle the compressedImageData
+                Task{
+                    do {
+                        if let rawImageData = try await newValue.loadTransferable(type: Data.self) {
+                            if let image = UIImage(data: rawImageData) {
+                                if let compressedImageData = image.jpegData(compressionQuality: 0.5) {
+                                    // UI updates must be done on the main thread
+                                    await MainActor.run {
+                                        postImageData = compressedImageData
+                                        photoItem = nil
+                                    }
+                                }
+                            }
+                        }
+                    } catch {
+                        print("Failed to load image data: \(error.localizedDescription)")
                     }
                 }
             }
         }
+        .alert(errorMessage, isPresented: $showError, actions: {})
+        // Loading view
+        .overlay{
+            LoadingView(show: $isLoading)
+        }
     }
+    
+    // Post Content to firebase
+    func createPost(){
+        isLoading = true
+        showKeyboard = false
+        Task{
+            do{
+                guard let profileURL = profileURL else{return}
+                // Step 1 : Uploading Image if any
+                let imageReferenceID = "\(userUID)\(Date())"
+                let storageRef = Storage.storage().reference().child("Post_Images").child(imageReferenceID)
+                if let postImageData{
+                    let _ = try await storageRef.putDataAsync(postImageData)
+                    let downloadURL = try await storageRef.downloadURL()
+                    
+                    // Step 3 : Create post object with image id and url
+                    let post = Post(text: postText, imageURL: downloadURL, imageReferenceID: imageReferenceID, userName: userName, userUID: userUID, userProfileURL: profileURL)
+                    try await createDocumentAtFirebase(post)
+                }
+                else{
+                    // Step 2 : Directly post text data to firebase (since there is no Images present)
+                    let post = Post(text: postText, userName: userName, userUID: userUID, userProfileURL: profileURL)
+                    try await createDocumentAtFirebase(post)
+                }
+            }catch{
+                await setError(error)
+            }
+        }
+    }
+    
+    func createDocumentAtFirebase(_ post: Post)async throws{
+        // Writing Document to Firebase Firestore
+        let _ = try Firestore.firestore().collection("Posts").addDocument(from: post, completion: { error in
+            if error == nil {
+                // Post Successfully Stored at Firebase
+                isLoading = false
+                onPost(post)
+                dismiss()
+            }
+        })
+    }
+    
+    // Displaying Errors as Alert
+    func setError(_ error: Error) async{
+        await MainActor.run(body: {
+            errorMessage = error.localizedDescription
+            showError.toggle()
+        })
+    }
+    
 }
 struct CreateNewPost_Previews: PreviewProvider {
     static var previews: some View {

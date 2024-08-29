@@ -12,14 +12,10 @@ struct ContentView: View {
     var logStatus: Bool = false
 
     var body: some View {
-        // MARK: Redirecting User Based on Log Status
-//        if logStatus {
-//            MainView()
-//        } else {
-//            LoginView()
-//        }
-        CreateNewPost{ _ in
-            
+        if logStatus {
+            MainView()
+        } else {
+            LoginView()
         }
     }
 }
