@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>Firebase API key</string>
+	<string>Firebase API Key</string>
 	<key>GCM_SENDER_ID</key>
 	<string>987386338427</string>
 	<key>PLIST_VERSION</key>

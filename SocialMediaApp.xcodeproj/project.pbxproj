@@ -40,6 +40,8 @@
 		25D9E3582C7F98EA009EEAE0 /* CreateNewPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D9E3572C7F98EA009EEAE0 /* CreateNewPost.swift */; };
 		25D9E35A2C7F992C009EEAE0 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D9E3592C7F992C009EEAE0 /* Post.swift */; };
 		25D9E35C2C8123D3009EEAE0 /* PostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D9E35B2C8123D3009EEAE0 /* PostsView.swift */; };
+		25D9E35E2C81C4E3009EEAE0 /* ReusablePostsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D9E35D2C81C4E3009EEAE0 /* ReusablePostsView.swift */; };
+		25D9E3602C81CC1E009EEAE0 /* PostCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D9E35F2C81CC1E009EEAE0 /* PostCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		25D9E3572C7F98EA009EEAE0 /* CreateNewPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewPost.swift; sourceTree = "<group>"; };
 		25D9E3592C7F992C009EEAE0 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		25D9E35B2C8123D3009EEAE0 /* PostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsView.swift; sourceTree = "<group>"; };
+		25D9E35D2C81C4E3009EEAE0 /* ReusablePostsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusablePostsView.swift; sourceTree = "<group>"; };
+		25D9E35F2C81CC1E009EEAE0 /* PostCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +177,8 @@
 				25D9E3522C7E3822009EEAE0 /* ReusableProfileContent.swift */,
 				25D9E3572C7F98EA009EEAE0 /* CreateNewPost.swift */,
 				25D9E35B2C8123D3009EEAE0 /* PostsView.swift */,
+				25D9E35D2C81C4E3009EEAE0 /* ReusablePostsView.swift */,
+				25D9E35F2C81CC1E009EEAE0 /* PostCardView.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -286,10 +292,12 @@
 				25D9E34F2C7E282E009EEAE0 /* MainView.swift in Sources */,
 				25D9E3392C7C2165009EEAE0 /* LoginView.swift in Sources */,
 				25D9E30A2C7C1EF1009EEAE0 /* ContentView.swift in Sources */,
+				25D9E35E2C81C4E3009EEAE0 /* ReusablePostsView.swift in Sources */,
 				25D9E34D2C7E2734009EEAE0 /* View+Extensions.swift in Sources */,
 				25D9E3582C7F98EA009EEAE0 /* CreateNewPost.swift in Sources */,
 				25D9E35C2C8123D3009EEAE0 /* PostsView.swift in Sources */,
 				25D9E34A2C7E2601009EEAE0 /* RegisterView.swift in Sources */,
+				25D9E3602C81CC1E009EEAE0 /* PostCardView.swift in Sources */,
 				25D9E3442C7CDA05009EEAE0 /* LoadingView.swift in Sources */,
 				25D9E3082C7C1EF1009EEAE0 /* SocialMediaAppApp.swift in Sources */,
 			);
