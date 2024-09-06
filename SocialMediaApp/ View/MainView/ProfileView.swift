@@ -114,9 +114,9 @@ struct ProfileView: View {
     }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView()
+//}
 
 /**
  guard let userUID = Auth.auth().currentUser?.uid else{return}
