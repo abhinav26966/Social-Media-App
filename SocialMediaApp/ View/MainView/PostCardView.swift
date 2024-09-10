@@ -58,7 +58,17 @@ struct PostCardView: View {
         .overlay(alignment: .topTrailing, content: {
             // Displaying Delete Button (if it's the author of that post)
             if post.userUID == userUID{
-                
+                Menu{
+                    Button("Delete Post", role: .destructive, action: deletePost)
+                }label: {
+                    Image(systemName: "ellipsis")
+                        .font(.caption)
+                        .rotationEffect(.init(degrees: -90))
+                        .foregroundColor(.black)
+                        .padding(8)
+                        .contentShape(Rectangle())
+                }
+                .offset(x: 8)
             }
         })
         .onAppear(){
@@ -78,6 +88,14 @@ struct PostCardView: View {
                         }
                     }
                 })
+            }
+        }
+        .onDisappear{
+            // Applying SnapShot Listner Only When the Post is Available on the Screen
+            // Else Removing the Listner (It saves unwanted live updates from the posts which was swiped away from the screen)
+            if let docListner{
+                docListner.remove()
+                self.docListner = nil
             }
         }
     }
@@ -142,6 +160,23 @@ struct PostCardView: View {
                     "likedIDs": FieldValue.arrayRemove([userUID]),
                     "dislikedIDs": FieldValue.arrayUnion([userUID])
                 ])
+            }
+        }
+    }
+    
+    // Deleting Post
+    func deletePost(){
+        Task{
+            // Step 1 : Delete image from Firebase Storage if present
+            do{
+                if post.imageReferenceID != ""{
+                    try await Storage.storage().reference().child("Post_Images").child(post.imageReferenceID).delete()
+                }
+                // Step 2 : Delete Firestore Document
+                guard let postID = post.id else{return}
+                try await Firestore.firestore().collection("Posts").document(postID).delete()
+            }catch{
+                print(error.localizedDescription)
             }
         }
     }

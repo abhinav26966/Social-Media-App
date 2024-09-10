@@ -57,11 +57,11 @@ struct ReusablePostsView: View {
                 }){
                     posts[index].likedIDs = updatedPost.likedIDs
                     posts[index].dislikedIDs = updatedPost.dislikedIDs
-                }
+                } 
             }onDelete: {
                 // Removing Post from the Array
                 withAnimation(.easeInOut(duration: 0.25)){
-                    posts.removeAll{post == $0}
+                    posts.removeAll{post.id == $0.id}
                 }
             }
             Divider()
