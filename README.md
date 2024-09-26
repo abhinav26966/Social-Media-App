@@ -1,4 +1,4 @@
-# 🚀 SwiftSocial: Next-Gen iOS Social Media App
+[# 🚀 SwiftSocial: Next-Gen iOS Social Media App
 
 Welcome to SwiftSocial, an innovative iOS social media application built with SwiftUI. This project showcases modern mobile development techniques, real-time data management, and a user-centric design approach to create a seamless social networking experience.
 
@@ -12,7 +12,9 @@ Welcome to SwiftSocial, an innovative iOS social media application built with Sw
 
 ## Demo of the Project: 
 
-Uploading Final_ScreenRecord_SocialMediaApp.mov…
+
+https://github.com/user-attachments/assets/6eb6864f-9255-4068-a428-3b7eefb077ec
+
 
 ## 🎯 Key Features
 
@@ -71,4 +73,3 @@ Uploading Final_ScreenRecord_SocialMediaApp.mov…
 - Develop an advanced search functionality for users and posts
 - Introduce a recommendation engine for content discovery
 - Implement push notifications for real-time engagement
-
