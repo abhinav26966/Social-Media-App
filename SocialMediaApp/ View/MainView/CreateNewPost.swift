@@ -167,7 +167,7 @@ struct CreateNewPost: View {
                 }
                 else{
                     // Step 2 : Directly post text data to firebase (since there is no Images present)
-                    let post = Post(text: postText, userName: userName, userUID: userUID, userProfileURL: profileURL)
+                    let post = Post(text: postText, userName: userName, userUID: userUID,    userProfileURL: profileURL)
                     try await createDocumentAtFirebase(post)
                 }
             }catch{
